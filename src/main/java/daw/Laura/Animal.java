@@ -23,7 +23,7 @@ public class Animal {
     private int tipo, //1 = Gato, 2 = Perro, 3 = Lagarto, 4 = Cobaya, 5 = Periquito
             estado; //1 = Comiendo, 2 = Durmiendo, 3 = Despierto/reposo, 4 = Jugando
     private double peso;
-    private int numAnimales = 0;
+    private int controladorInstancias = 0;
 
     public Animal() {
         this.tipo = 1;
@@ -31,7 +31,7 @@ public class Animal {
         this.peso = 2200;
         this.estado = 2;
         this.nacimiento = LocalDate.now();
-        numAnimales++;  
+        controladorInstancias++;  
     }
 
     public Animal(LocalDate nacimiento, String nombre, int tipo, int estado, double peso) {
@@ -40,7 +40,7 @@ public class Animal {
         this.tipo = tipo;
         this.estado = estado;
         this.peso = peso;
-        numAnimales++;
+        controladorInstancias++;
     }
     
     public void comer(double cantidadGramos) { 	
@@ -73,11 +73,16 @@ public class Animal {
 	@Override
 	public String toString() {
 		return "Animal [nacimiento=" + nacimiento + ", nombre=" + nombre + ", tipo=" + tipo + ", estado=" + estado
-				+ ", peso=" + peso + ", numAnimales=" + numAnimales + "]";
+				+ ", peso=" + peso + ", numAnimales=" + controladorInstancias + "]";
 	}
     
     public Animal clonar(Animal pet) {
     	return new Animal(pet.nacimiento, pet.nombre, pet.tipo, pet.estado, pet.peso);
     }
+
+	public int getControladorInstacias() {
+		return controladorInstancias;
+	}
+    
     
 }
