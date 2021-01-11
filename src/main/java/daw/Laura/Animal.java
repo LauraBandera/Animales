@@ -43,6 +43,12 @@ public class Animal {
         numAnimales++;
     }
     
+    public void comer(double cantidadGramos) {
+    	
+    	Math.abs(cantidadGramos);  	
+    	this.peso += cantidadGramos;
+    }
+    
     
     
     
