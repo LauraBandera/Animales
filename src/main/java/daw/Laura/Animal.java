@@ -69,7 +69,15 @@ public class Animal {
     		this.peso -= 10;
     	}
     }
+
+	@Override
+	public String toString() {
+		return "Animal [nacimiento=" + nacimiento + ", nombre=" + nombre + ", tipo=" + tipo + ", estado=" + estado
+				+ ", peso=" + peso + ", numAnimales=" + numAnimales + "]";
+	}
     
-    
+    public Animal clonar(Animal pet) {
+    	return new Animal(pet.nacimiento, pet.nombre, pet.tipo, pet.estado, pet.peso);
+    }
     
 }
