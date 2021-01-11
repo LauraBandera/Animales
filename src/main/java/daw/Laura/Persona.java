@@ -2,19 +2,23 @@ package daw.Laura;
 
 public class Persona {
 
+	//Atributos
 	private String nombre;
 	private int edad;
 	
+	//Constructor con parámetros
 	public Persona(String nombre, int edad) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
 	}
 
+	//Constructor por defecto 
 	public Persona() {
 		super();
 	}
 	
+	//Métodos de la clase
 	public void llamar(Animal pet) {
 		pet.despertar();
 	}
@@ -25,10 +29,10 @@ public class Persona {
 	
 	public void jugar(Animal pet, int cantidadMinutos) {
 		if(cantidadMinutos > 180) {
+			cantidadMinutos = 180;
 			throw new IllegalArgumentException ("Valor introducido no válido");
 			//cantidadMinutos = 180;
 		}
-		cantidadMinutos = 180;
 		pet.jugar(cantidadMinutos);
 	}
 }
