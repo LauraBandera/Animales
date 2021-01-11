@@ -48,7 +48,18 @@ public class Animal {
     	Math.abs(cantidadGramos);  	
     	this.peso += cantidadGramos;
     }
+
+    public void dormir() {
+    	this.estado = 2;
+    }
     
+    public void despertar() {
+    	this.estado = 3;
+    }
+    
+    public void descansar() {
+    	this.estado = 3;
+    }
     
     
     
