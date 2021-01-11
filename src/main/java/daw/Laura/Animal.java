@@ -43,10 +43,8 @@ public class Animal {
         numAnimales++;
     }
     
-    public void comer(double cantidadGramos) {
-    	
-    	Math.abs(cantidadGramos);  	
-    	this.peso += cantidadGramos;
+    public void comer(double cantidadGramos) { 	
+    	this.peso += Math.abs(cantidadGramos); ;
     }
 
     public void dormir() {
@@ -59,6 +57,17 @@ public class Animal {
     
     public void descansar() {
     	this.estado = 3;
+    }
+    
+    public void jugar(int cantidadMinutos) {
+    	cantidadMinutos = Math.abs(cantidadMinutos);
+    	if(cantidadMinutos > 180) {
+    		throw new IllegalArgumentException ("Valor demasiado grande");
+    	}else if(cantidadMinutos > 30) {
+    		this.peso -= (cantidadMinutos/30)*20;
+    	}else {
+    		this.peso -= 10;
+    	}
     }
     
     
