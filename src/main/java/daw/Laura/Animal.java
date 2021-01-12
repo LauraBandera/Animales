@@ -59,6 +59,7 @@ public class Animal {
     //Métodos de la clase
     public void comer(double cantidadGramos) { 	
     	this.peso += Math.abs(cantidadGramos); ;
+    	this.estado = 1;
     }
 
     public void dormir() {
@@ -77,7 +78,9 @@ public class Animal {
     	cantidadMinutos = Math.abs(cantidadMinutos);
     	if(cantidadMinutos > 180) {
     		throw new IllegalArgumentException ("Valor demasiado grande");
-    	}else if(cantidadMinutos > 30) {
+    	}
+    	this.estado = 4;    	
+    	if(cantidadMinutos > 30) {
     		this.peso -= (cantidadMinutos/30)*20;
     	}else {
     		this.peso -= 10;
@@ -91,7 +94,11 @@ public class Animal {
 	}
     
     public static Animal clonar(Animal pet) {
-    	return new Animal(pet.nacimiento, pet.nombre, pet.tipo, pet.estado, pet.peso);
+    	if(pet == null) {
+    		return new Animal();
+    	}else {
+        	return new Animal(pet.nacimiento, pet.nombre, pet.tipo, pet.estado, pet.peso);
+    	}
     }
 
     //Getters
