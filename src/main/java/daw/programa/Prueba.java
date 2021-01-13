@@ -3,7 +3,9 @@ package daw.programa;
 import java.time.LocalDate;
 
 import daw.Laura.Animal;
+import daw.Laura.EstadosAnimal;
 import daw.Laura.Persona;
+import daw.Laura.TiposAnimal;
 
 public class Prueba {
 
@@ -12,7 +14,7 @@ public class Prueba {
 		
 		//Creación objetos clase Animal
 		Animal a1 = new Animal();
-		Animal a2 = new Animal(LocalDate.of(2020, 9, 12), "Tob", 3, 2, 20.5);
+		Animal a2 = new Animal(LocalDate.of(2020, 9, 12), "Tob", TiposAnimal.PERRO, EstadosAnimal.DURMIENDO, 20.5);
 		
 		//Creación objetos clase Persona
 		Persona p1 = new Persona("Pepe", 47);
