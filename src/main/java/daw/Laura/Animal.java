@@ -21,37 +21,36 @@ public class Animal {
 	//Atributos
     private LocalDate nacimiento;
     private String nombre;
-    private int tipo, //1 = Gato, 2 = Perro, 3 = Lagarto, 4 = Cobaya, 5 = Periquito
-            estado; //1 = Comiendo, 2 = Durmiendo, 3 = Despierto/reposo, 4 = Jugando
+    
+	/*
+	 * private int tipo, //1 = Gato, 2 = Perro, 3 = Lagarto, 4 = Cobaya, 5 =
+	 * Periquito estado; //1 = Comiendo, 2 = Durmiendo, 3 = Despierto/reposo, 4 =
+	 * Jugando
+	 */
+
+    //Cambiamos tipo y estado a enum
+    private TiposAnimal tipo;
+    private EstadosAnimal estado;
+    
     private double peso;
     private static int contadorInstancias = 0;
 
     //Constructor por defecto
     public Animal() {
-        this.tipo = 1;
+        this.tipo = tipo.GATO;
         this.nombre = "Turrón";
         this.peso = 2200;
-        this.estado = 2;
+        this.estado = estado.DURMIENDO;
         this.nacimiento = LocalDate.now();
         contadorInstancias++;  
     }
 
     //Constructor con parametros
-    public Animal(LocalDate nacimiento, String nombre, int tipo, int estado, double peso) {
+    public Animal(LocalDate nacimiento, String nombre, TiposAnimal tipo, EstadosAnimal estado, double peso) {
         this.nacimiento = nacimiento;
         this.nombre = nombre;
-        if(tipo > 5 || tipo < 1) {
-        	this.tipo = 1;
-        	throw new IllegalArgumentException ("Valor tipo no posible (Se asigna por defecto el 1 = Gato");
-        }else {
-            this.tipo = tipo;
-        }
-        if(estado > 4 || estado < 1) {
-        	this.estado = 1;
-        	throw new IllegalArgumentException ("Valor tipo no posible (Se asigna por defecto el 1 = Comiendo");
-        }else {
-            this.estado = estado;
-        }
+        this.tipo = tipo;
+        this.estado = estado;
         this.peso = peso;
         contadorInstancias++;
     }
@@ -59,19 +58,19 @@ public class Animal {
     //Métodos de la clase
     public void comer(double cantidadGramos) { 	
     	this.peso += Math.abs(cantidadGramos); ;
-    	this.estado = 1;
+    	this.estado = estado.COMIENDO;
     }
 
     public void dormir() {
-    	this.estado = 2;
+    	this.estado = estado.DURMIENDO;
     }
     
     public void despertar() {
-    	this.estado = 3;
+    	this.estado = estado.DESPIERTO;
     }
     
     public void descansar() {
-    	this.estado = 3;
+    	this.estado = estado.DESPIERTO;
     }
     
     public void jugar(int cantidadMinutos) {
@@ -79,7 +78,7 @@ public class Animal {
     	if(cantidadMinutos > 180) {
     		throw new IllegalArgumentException ("Valor demasiado grande");
     	}
-    	this.estado = 4;    	
+    	this.estado = estado.JUGANDO;    	
     	if(cantidadMinutos > 30) {
     		this.peso -= (cantidadMinutos/30)*20;
     	}else {
@@ -112,14 +111,6 @@ public class Animal {
 
 	public String getNombre() {
 		return nombre;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public int getEstado() {
-		return estado;
 	}
 
 	public double getPeso() {
